@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 1 Quiz</title>
+<style>
+    body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+    .question { margin-bottom: 20px; }
+    button { background-color: #4285F4; color: white; border: none; padding: 10px; margin: 5px; cursor: pointer; border-radius: 5px; }
+    button:hover { background-color: #357ae8; }
+</style>
+</head>
+<body>
+
+<h1>Week 1 Quiz</h1>
+
+<div id="quiz-container"></div>
+
+<script>
+    const questions = [
+    {
+        question: "A 45-year-old patient with a history of atrial fibrillation presents with sudden onset shortness of breath and chest pain. Which of the following anticoagulants would be most appropriate for preventing stroke in this patient?",
+        options: ["Aspirin", "Rivaroxaban (Xarelto)", "Clopidogrel", "Heparin"],
+        answer: 1
+    },
+    {
+        question: "A patient with a fever, altered mental status, anemia, thrombocytopenia, and acute kidney injury is most likely suffering from which of the following conditions?",
+        options: ["Hemolytic Uremic Syndrome (HUS)", "Thrombotic Thrombocytopenic Purpura (TTP)", "Disseminated Intravascular Coagulation (DIC)", "Immune Thrombocytopenic Purpura (ITP)"],
+        answer: 1
+    },
+    {
+        question: "Which of the following is most likely to cause recurrent unprovoked deep vein thrombosis (DVT) despite anticoagulation therapy?",
+        options: ["Antiphospholipid syndrome (APLS)", "Iron deficiency anemia", "Von Willebrand disease", "Hemophilia A"],
+        answer: 0
+    },
+    {
+        question: "A patient on warfarin therapy requires monitoring of which of the following lab values to ensure therapeutic anticoagulation?",
+        options: ["aPTT", "INR", "D-dimer", "Fibrinogen"],
+        answer: 1
+    },
+    {
+        question: "Which of the following factors is involved in the extrinsic pathway of the coagulation cascade and is monitored by PT/INR?",
+        options: ["Factor VIII", "Factor VII", "Factor IX", "Factor XII"],
+        answer: 1
+    },
+    {
+        question: "A patient presents with chest pain that is sharp, worse with lying down, and partially relieved by sitting up. Which of the following is the most likely diagnosis?",
+        options: ["Myocardial infarction", "Aortic dissection", "Pericarditis", "Pulmonary embolism"],
+        answer: 2
+    },
+    {
+        question: "Which of the following best describes the mechanism of action of factor Xa inhibitors such as rivaroxaban?",
+        options: ["Inhibits platelet aggregation by blocking ADP receptors", "Directly inhibits thrombin (factor IIa)", "Inhibits the conversion of prothrombin to thrombin by inhibiting factor Xa", "Activates antithrombin to inhibit thrombin and factor Xa"],
+        answer: 2
+    },
+    {
+        question: "A patient with a history of COVID-19 presents with a new deep vein thrombosis (DVT). Which of the following mechanisms is most likely responsible for the increased risk of thrombosis in this patient?",
+        options: ["Activation of plasminogen", "Endothelial cell dysfunction and hyperinflammatory response", "Decreased platelet count", "Decreased coagulation factor production"],
+        answer: 1
+    },
+    {
+        question: "In a patient with suspected disseminated intravascular coagulation (DIC), which of the following lab findings would you most likely expect?",
+        options: ["Elevated fibrinogen, normal PT, and normal D-dimer", "Low fibrinogen, elevated PT, and elevated D-dimer", "Low fibrinogen, low PT, and low D-dimer", "Elevated fibrinogen, elevated PT, and low D-dimer"],
+        answer: 1
+    },
+    {
+        question: "Which of the following conditions is most commonly associated with a hypercoagulable state due to malignancy?",
+        options: ["Pancreatic cancer", "Prostate cancer", "Breast cancer", "Thyroid cancer"],
+        answer: 0
+    },
+    {
+        question: "Which of the following best explains why patients with cystic fibrosis are at increased risk for infections?",
+        options: ["Impaired immune cell function", "Hyperviscous mucus and impaired mucociliary clearance", "Decreased production of immunoglobulins", "Inhibition of complement activation"],
+        answer: 1
+    },
+    {
+        question: "A patient presents with signs of DVT and has a known factor V Leiden mutation. Which of the following best describes the pathophysiology of this condition?",
+        options: ["Increased production of thrombin", "Resistance to activated protein C", "Deficiency of antithrombin III", "Impaired fibrinolysis"],
+        answer: 1
+    },
+    {
+        question: "Which of the following is the most appropriate management for a patient with acute arterial occlusion of the lower extremity presenting with pain, pallor, pulselessness, paresthesia, paralysis, and poikilothermia (the 6 Ps)?",
+        options: ["Immediate anticoagulation with heparin", "Oral anticoagulation with warfarin", "Observation and follow-up in 24 hours", "Thrombolysis with tissue plasminogen activator (tPA)"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is the most appropriate next step in management for a hemodynamically unstable patient with suspected pulmonary embolism?",
+        options: ["Immediate anticoagulation with heparin", "CT pulmonary angiography", "Thrombolysis", "V/Q scan"],
+        answer: 2
+    },
+    {
+        question: "Which of the following medications is most likely to cause heparin-induced thrombocytopenia (HIT)?",
+        options: ["Warfarin", "Low molecular weight heparin (LMWH)", "Unfractionated heparin", "Fondaparinux"],
+        answer: 2
+    },
+    {
+        question: "Which of the following is the most appropriate management for a patient with suspected antiphospholipid syndrome (APLS) who presents with recurrent venous thromboembolism?",
+        options: ["Aspirin alone", "Warfarin with an INR target of 2-3", "Rivaroxaban", "Heparin bridge to warfarin"],
+        answer: 3
+    }
+];
+
+
+    const quizContainer = document.getElementById('quiz-container');
+
+    questions.forEach((q, i) => {
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'question';
+        questionDiv.innerHTML = `
+            <h2>Question ${i + 1} of ${questions.length}</h2>
+            <p>${q.question}</p>
+            ${q.options.map((opt, j) => `<button onclick="checkAnswer(${i}, ${j})">${opt}</button>`).join('')}
+            <p id="feedback-${i}" style="color: green;"></p>
+        `;
+        quizContainer.appendChild(questionDiv);
+    });
+
+    function checkAnswer(questionIndex, selectedOption) {
+        const feedback = document.getElementById(`feedback-${questionIndex}`);
+        if (selectedOption === questions[questionIndex].answer) {
+            feedback.textContent = "Correct!";
+        } else {
+            feedback.textContent = "Incorrect, try again.";
+        }
+    }
+</script>
+
+</body>
+</html>
