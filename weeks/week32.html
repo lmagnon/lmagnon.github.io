@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 1 Quiz</title>
+<style>
+    body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+    .question { margin-bottom: 20px; }
+    button { background-color: #4285F4; color: white; border: none; padding: 10px; margin: 5px; cursor: pointer; border-radius: 5px; }
+    button:hover { background-color: #357ae8; }
+</style>
+</head>
+<body>
+
+<h1>Week 1 Quiz</h1>
+
+<div id="quiz-container"></div>
+
+<script>
+   const questions = [
+    {
+        question: "A patient with cystic fibrosis presents with increased sputum production and difficulty breathing. Which of the following medications would be most appropriate to reduce mucus viscosity and improve airway clearance?",
+        options: ["Fluticasone", "Ipratropium", "Dornase alfa (DNase)", "Albuterol"],
+        answer: 2
+    },
+    {
+        question: "Which of the following is the most common mutation associated with cystic fibrosis?",
+        options: ["G551D", "R117H", "F508del", "W1282X"],
+        answer: 2
+    },
+    {
+        question: "A child with cystic fibrosis presents with greasy stools and poor growth. Which of the following is the most appropriate initial treatment?",
+        options: ["Pancreatic enzyme replacement", "Antibiotics", "Proton pump inhibitors", "Lactulose"],
+        answer: 0
+    },
+    {
+        question: "Which of the following pathogens is most commonly associated with pulmonary infections in older children and adults with cystic fibrosis?",
+        options: ["Streptococcus pneumoniae", "Haemophilus influenzae", "Pseudomonas aeruginosa", "Klebsiella pneumoniae"],
+        answer: 2
+    },
+    {
+        question: "A patient with cystic fibrosis has recurrent pulmonary infections with Pseudomonas aeruginosa. Which of the following antibiotics is most appropriate for chronic suppression therapy?",
+        options: ["Azithromycin", "Amoxicillin", "Metronidazole", "Clindamycin"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is the most common cause of death in patients with cystic fibrosis?",
+        options: ["Pulmonary complications", "Pancreatic insufficiency", "Liver failure", "Intestinal obstruction"],
+        answer: 0
+    },
+    {
+        question: "Which of the following findings is most consistent with cystic fibrosis on a sweat chloride test?",
+        options: [">60 mmol/L", "<20 mmol/L", "20-40 mmol/L", "40-60 mmol/L"],
+        answer: 0
+    },
+    {
+        question: "Which of the following vitamins is most likely to be deficient in a patient with cystic fibrosis due to fat malabsorption?",
+        options: ["Vitamin C", "Vitamin B12", "Vitamin D", "Vitamin B6"],
+        answer: 2
+    },
+    {
+        question: "Which of the following is the most appropriate management for a patient with cystic fibrosis and pancreatic insufficiency?",
+        options: ["Pancrelipase and fat-soluble vitamin supplementation", "Metformin and insulin", "Statins and ACE inhibitors", "Antibiotics and bronchodilators"],
+        answer: 0
+    },
+    {
+        question: "A patient with cystic fibrosis develops hemoptysis. Which of the following is the most appropriate initial management?",
+        options: ["Bronchoscopy", "IV antibiotics", "Airway clearance and hemostasis", "Chest X-ray"],
+        answer: 2
+    },
+    {
+        question: "Which of the following pulmonary function test results is most consistent with cystic fibrosis?",
+        options: ["Reduced FEV1/FVC ratio and obstructive pattern", "Increased FEV1/FVC ratio and restrictive pattern", "Normal FEV1/FVC ratio", "Increased FVC"],
+        answer: 0
+    },
+    {
+        question: "A patient with cystic fibrosis has frequent respiratory infections. Which of the following is the most appropriate prophylactic treatment?",
+        options: ["Inhaled tobramycin", "Oral prednisone", "IV vancomycin", "Oral amoxicillin"],
+        answer: 0
+    },
+    {
+        question: "Which of the following medications is most appropriate to improve chloride transport in patients with certain CFTR mutations in cystic fibrosis?",
+        options: ["Ivacaftor", "Albuterol", "Ipratropium", "Budesonide"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is the most appropriate dietary recommendation for a patient with cystic fibrosis?",
+        options: ["High-calorie, high-protein diet", "Low-fat, high-fiber diet", "Gluten-free diet", "Vegan diet"],
+        answer: 0
+    },
+    {
+        question: "A patient with cystic fibrosis presents with biliary cirrhosis. Which of the following is the most likely cause?",
+        options: ["Obstruction of bile ducts by thickened secretions", "Autoimmune destruction of bile ducts", "Gallstones", "Alcoholic hepatitis"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is the most appropriate initial screening test for cystic fibrosis in a newborn?",
+        options: ["Immunoreactive trypsinogen (IRT) test", "Sweat chloride test", "Genetic testing", "Chest X-ray"],
+        answer: 0
+    },
+    {
+        question: "Which of the following medications is most likely to be used to reduce airway inflammation in cystic fibrosis?",
+        options: ["Inhaled corticosteroids", "ACE inhibitors", "Statins", "Oral glucocorticoids"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is a common gastrointestinal complication of cystic fibrosis?",
+        options: ["Meconium ileus", "Gastroesophageal reflux", "Peptic ulcer disease", "Crohn's disease"],
+        answer: 0
+    },
+    {
+        question: "A patient with cystic fibrosis is found to have nasal polyps. Which of the following is the most likely cause?",
+        options: ["Chronic inflammation due to thick mucus", "Allergic rhinitis", "Chronic sinus infections", "Granulomatous inflammation"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is the most appropriate next step for a patient with cystic fibrosis who presents with new onset diabetes mellitus?",
+        options: ["Insulin therapy", "Oral hypoglycemics", "Dietary management alone", "Pancreatic enzyme replacement"],
+        answer: 0
+    }
+];
+
+    const quizContainer = document.getElementById('quiz-container');
+
+    questions.forEach((q, i) => {
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'question';
+        questionDiv.innerHTML = `
+            <h2>Question ${i + 1} of ${questions.length}</h2>
+            <p>${q.question}</p>
+            ${q.options.map((opt, j) => `<button onclick="checkAnswer(${i}, ${j})">${opt}</button>`).join('')}
+            <p id="feedback-${i}" style="color: green;"></p>
+        `;
+        quizContainer.appendChild(questionDiv);
+    });
+
+    function checkAnswer(questionIndex, selectedOption) {
+        const feedback = document.getElementById(`feedback-${questionIndex}`);
+        if (selectedOption === questions[questionIndex].answer) {
+            feedback.textContent = "Correct!";
+        } else {
+            feedback.textContent = "Incorrect, try again.";
+        }
+    }
+</script>
+
+</body>
+</html>
