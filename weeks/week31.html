@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 1 Quiz</title>
+<style>
+    body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+    .question { margin-bottom: 20px; }
+    button { background-color: #4285F4; color: white; border: none; padding: 10px; margin: 5px; cursor: pointer; border-radius: 5px; }
+    button:hover { background-color: #357ae8; }
+</style>
+</head>
+<body>
+
+<h1>Week 1 Quiz</h1>
+
+<div id="quiz-container"></div>
+
+<script>
+    const questions = [
+    {
+        question: "A patient presents with symmetric joint pain, morning stiffness lasting more than 30 minutes, and positive rheumatoid factor (RF). Which of the following is the most likely diagnosis?",
+        options: ["Rheumatoid arthritis", "Osteoarthritis", "Psoriatic arthritis", "Gout"],
+        answer: 0
+    },
+    {
+        question: "Which of the following antibodies is most specific for systemic lupus erythematosus (SLE)?",
+        options: ["Anti-dsDNA", "ANA", "Anti-CCP", "Anti-histone"],
+        answer: 0
+    },
+    {
+        question: "A patient presents with sclerodactyly, telangiectasia, and esophageal dysmotility. Which of the following antibodies is most specific for limited scleroderma (CREST syndrome)?",
+        options: ["Anti-centromere", "Anti-Scl-70", "ANA", "Anti-RNP"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is a key difference between limited and diffuse scleroderma?",
+        options: ["Extent of skin involvement", "Presence of anti-centromere antibodies", "Risk of pulmonary hypertension", "All of the above"],
+        answer: 3
+    },
+    {
+        question: "A patient with diffuse scleroderma presents with sudden onset renal failure and malignant hypertension. Which of the following is the most appropriate initial treatment?",
+        options: ["ACE inhibitors", "Calcium channel blockers", "Beta-blockers", "Diuretics"],
+        answer: 0
+    },
+    {
+        question: "Which of the following best explains the pathophysiology of Raynaud's phenomenon in scleroderma?",
+        options: ["Vasospasm of digital arteries", "Immune complex deposition", "Cartilage degradation", "Crystal deposition in joints"],
+        answer: 0
+    },
+    {
+        question: "A patient with systemic lupus erythematosus presents with pleuritic chest pain and a pericardial effusion. Which of the following is the most likely cause?",
+        options: ["Serositis", "Libman-Sacks endocarditis", "Pneumonia", "Pulmonary embolism"],
+        answer: 0
+    },
+    {
+        question: "Which of the following autoantibodies is most specific for mixed connective tissue disease (MCTD)?",
+        options: ["Anti-U1-RNP", "Anti-dsDNA", "Anti-Scl-70", "Anti-centromere"],
+        answer: 0
+    },
+    {
+        question: "Which of the following findings is most consistent with polymyositis?",
+        options: ["Proximal muscle weakness and elevated CK", "Distal muscle weakness and normal CK", "Proximal muscle pain without weakness", "Normal muscle biopsy"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is the most appropriate diagnostic test for interstitial lung disease in a patient with scleroderma?",
+        options: ["High-resolution CT scan", "Chest X-ray", "Spirometry", "Bronchoscopy"],
+        answer: 0
+    },
+    {
+        question: "A patient with rheumatoid arthritis presents with dry eyes and dry mouth. Which of the following is the most likely diagnosis?",
+        options: ["Sjögren's syndrome", "Systemic sclerosis", "Systemic lupus erythematosus", "Ankylosing spondylitis"],
+        answer: 0
+    },
+    {
+        question: "Which of the following medications is most appropriate for inducing remission in severe systemic lupus erythematosus (SLE)?",
+        options: ["Cyclophosphamide", "Methotrexate", "Hydroxychloroquine", "Aspirin"],
+        answer: 0
+    },
+    {
+        question: "A patient presents with calcinosis cutis, Raynaud's phenomenon, esophageal dysmotility, sclerodactyly, and telangiectasia. Which of the following is the most likely diagnosis?",
+        options: ["Limited scleroderma (CREST syndrome)", "Diffuse scleroderma", "Dermatomyositis", "Polymyositis"],
+        answer: 0
+    },
+    {
+        question: "Which of the following findings is most consistent with ankylosing spondylitis?",
+        options: ["Low back pain that improves with exercise", "Low back pain that worsens with exercise", "Symmetric joint pain", "Distal muscle weakness"],
+        answer: 0
+    },
+    {
+        question: "A patient with scleroderma has worsening dyspnea. Pulmonary function tests show a normal FEV1/FVC ratio with reduced DLCO. Which of the following is the most likely cause?",
+        options: ["Interstitial lung disease", "Obstructive lung disease", "Pulmonary embolism", "Asthma"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is most characteristic of antiphospholipid syndrome?",
+        options: ["Recurrent venous or arterial thrombosis", "Elevated ESR", "Thrombocytosis", "Low ANA titer"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is the most appropriate management for scleroderma renal crisis?",
+        options: ["ACE inhibitors", "Beta-blockers", "Calcium channel blockers", "Thiazide diuretics"],
+        answer: 0
+    },
+    {
+        question: "A patient presents with fatigue, weight loss, and recurrent oral ulcers. ANA is positive, and anti-Smith antibodies are also detected. Which of the following is the most likely diagnosis?",
+        options: ["Systemic lupus erythematosus", "Rheumatoid arthritis", "Sjögren's syndrome", "Systemic sclerosis"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is the most appropriate treatment for Raynaud's phenomenon in a patient with systemic sclerosis?",
+        options: ["Calcium channel blockers", "Beta-blockers", "ACE inhibitors", "Aspirin"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is most consistent with dermatomyositis?",
+        options: ["Proximal muscle weakness and Gottron's papules", "Distal muscle weakness and heliotrope rash", "Proximal muscle pain without rash", "Normal muscle biopsy"],
+        answer: 0
+    }
+];
+
+    const quizContainer = document.getElementById('quiz-container');
+
+    questions.forEach((q, i) => {
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'question';
+        questionDiv.innerHTML = `
+            <h2>Question ${i + 1} of ${questions.length}</h2>
+            <p>${q.question}</p>
+            ${q.options.map((opt, j) => `<button onclick="checkAnswer(${i}, ${j})">${opt}</button>`).join('')}
+            <p id="feedback-${i}" style="color: green;"></p>
+        `;
+        quizContainer.appendChild(questionDiv);
+    });
+
+    function checkAnswer(questionIndex, selectedOption) {
+        const feedback = document.getElementById(`feedback-${questionIndex}`);
+        if (selectedOption === questions[questionIndex].answer) {
+            feedback.textContent = "Correct!";
+        } else {
+            feedback.textContent = "Incorrect, try again.";
+        }
+    }
+</script>
+
+</body>
+</html>
