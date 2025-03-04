@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 1 Quiz</title>
+<style>
+    body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+    .question { margin-bottom: 20px; }
+    button { background-color: #4285F4; color: white; border: none; padding: 10px; margin: 5px; cursor: pointer; border-radius: 5px; }
+    button:hover { background-color: #357ae8; }
+</style>
+</head>
+<body>
+
+<h1>Week 1 Quiz</h1>
+
+<div id="quiz-container"></div>
+
+<script>
+    const questions = [
+    {
+        question: "A 65-year-old male presents with right upper quadrant pain, jaundice, and dark urine. Which of the following is the most likely cause?",
+        options: ["Acute cholecystitis", "Choledocholithiasis", "Hepatitis C", "Hemochromatosis"],
+        answer: 1
+    },
+    {
+        question: "Which of the following is most consistent with a diagnosis of acute pancreatitis?",
+        options: ["Epigastric pain radiating to the back and elevated lipase", "Right upper quadrant pain and elevated AST/ALT", "Colicky pain and elevated bilirubin", "Left upper quadrant pain and elevated amylase only"],
+        answer: 0
+    },
+    {
+        question: "A patient presents with new-onset ascites and a history of chronic alcohol use. Which of the following findings would most strongly suggest cirrhosis?",
+        options: ["Spider angiomas and thrombocytopenia", "Colonic polyps", "Pancreatic calcifications", "Diffuse alveolar hemorrhage"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is the most appropriate next step in management for a patient with suspected upper gastrointestinal bleeding and hemodynamic instability?",
+        options: ["IV proton pump inhibitor", "Urgent upper endoscopy", "IV fluids and blood transfusion", "Oral iron supplementation"],
+        answer: 2
+    },
+    {
+        question: "A 45-year-old female with obesity and diabetes presents with elevated liver enzymes and hepatomegaly. Ultrasound shows a hyperechoic liver. Which of the following is the most likely diagnosis?",
+        options: ["Non-alcoholic fatty liver disease (NAFLD)", "Hepatitis B", "Hemochromatosis", "Wilson's disease"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is a common cause of unconjugated hyperbilirubinemia?",
+        options: ["Hemolysis", "Cholangiocarcinoma", "Primary sclerosing cholangitis", "Pancreatic cancer"],
+        answer: 0
+    },
+    {
+        question: "A patient with cirrhosis presents with confusion and asterixis. Which of the following is the most appropriate initial treatment?",
+        options: ["Lactulose", "Spironolactone", "Furosemide", "Propranolol"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is most likely to cause an isolated elevation in alkaline phosphatase?",
+        options: ["Cholestasis", "Hepatitis", "Cirrhosis", "Acute pancreatitis"],
+        answer: 0
+    },
+    {
+        question: "Which of the following antibodies is most specific for autoimmune hepatitis?",
+        options: ["Anti-smooth muscle antibody", "Anti-mitochondrial antibody", "Anti-LKM antibody", "ANA"],
+        answer: 0
+    },
+    {
+        question: "A 50-year-old male presents with fatigue, pruritus, and jaundice. Anti-mitochondrial antibodies are positive. Which of the following is the most likely diagnosis?",
+        options: ["Primary biliary cholangitis (PBC)", "Primary sclerosing cholangitis (PSC)", "Autoimmune hepatitis", "Alcoholic liver disease"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is the most common cause of hepatocellular carcinoma worldwide?",
+        options: ["Hepatitis B", "Hepatitis C", "Alcoholic cirrhosis", "Hemochromatosis"],
+        answer: 0
+    },
+    {
+        question: "Which of the following findings is most consistent with Wilson's disease?",
+        options: ["Low serum ceruloplasmin and Kayser-Fleischer rings", "Elevated ferritin and transferrin saturation", "Positive anti-smooth muscle antibody", "Elevated alpha-fetoprotein"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is the most appropriate treatment for a patient with hepatic encephalopathy?",
+        options: ["Lactulose and rifaximin", "Metronidazole and vancomycin", "Furosemide and spironolactone", "Propranolol and carvedilol"],
+        answer: 0
+    },
+    {
+        question: "A 40-year-old male presents with jaundice, dark urine, and weight loss. Imaging reveals a mass at the head of the pancreas. Which of the following is the most likely diagnosis?",
+        options: ["Pancreatic adenocarcinoma", "Cholangiocarcinoma", "Hepatocellular carcinoma", "Gallbladder cancer"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is most consistent with primary sclerosing cholangitis?",
+        options: ["Elevated alkaline phosphatase and beading on ERCP", "Positive anti-mitochondrial antibody", "Low ceruloplasmin and Kayser-Fleischer rings", "Elevated alpha-fetoprotein"],
+        answer: 0
+    },
+    {
+        question: "A patient presents with ascites, hepatomegaly, and elevated jugular venous pressure. Which of the following is the most likely diagnosis?",
+        options: ["Hepatic vein thrombosis (Budd-Chiari syndrome)", "Hepatorenal syndrome", "Spontaneous bacterial peritonitis", "Hepatocellular carcinoma"],
+        answer: 0
+    },
+    {
+        question: "Which of the following findings is most consistent with hemochromatosis?",
+        options: ["Elevated ferritin and transferrin saturation", "Low ceruloplasmin", "Positive anti-mitochondrial antibody", "Elevated alpha-fetoprotein"],
+        answer: 0
+    },
+    {
+        question: "A patient with a history of intravenous drug use presents with jaundice and elevated liver enzymes. Hepatitis C antibody is positive. Which of the following is the most appropriate next step?",
+        options: ["HCV RNA PCR", "Liver biopsy", "Alpha-fetoprotein level", "Ultrasound"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is most consistent with alcoholic hepatitis?",
+        options: ["AST:ALT ratio >2", "Elevated alkaline phosphatase", "Anti-mitochondrial antibodies", "Isolated hyperbilirubinemia"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is the best initial imaging modality for evaluating suspected biliary obstruction?",
+        options: ["Ultrasound", "CT scan", "MRCP", "ERCP"],
+        answer: 0
+    },
+    {
+        question: "A patient presents with jaundice and a palpable gallbladder. Which of the following is the most likely cause?",
+        options: ["Pancreatic head tumor", "Acute cholecystitis", "Chronic hepatitis", "Hemochromatosis"],
+        answer: 0
+    }
+];
+
+
+    const quizContainer = document.getElementById('quiz-container');
+
+    questions.forEach((q, i) => {
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'question';
+        questionDiv.innerHTML = `
+            <h2>Question ${i + 1} of ${questions.length}</h2>
+            <p>${q.question}</p>
+            ${q.options.map((opt, j) => `<button onclick="checkAnswer(${i}, ${j})">${opt}</button>`).join('')}
+            <p id="feedback-${i}" style="color: green;"></p>
+        `;
+        quizContainer.appendChild(questionDiv);
+    });
+
+    function checkAnswer(questionIndex, selectedOption) {
+        const feedback = document.getElementById(`feedback-${questionIndex}`);
+        if (selectedOption === questions[questionIndex].answer) {
+            feedback.textContent = "Correct!";
+        } else {
+            feedback.textContent = "Incorrect, try again.";
+        }
+    }
+</script>
+
+</body>
+</html>
