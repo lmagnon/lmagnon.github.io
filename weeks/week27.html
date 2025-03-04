@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 1 Quiz</title>
+<style>
+    body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+    .question { margin-bottom: 20px; }
+    button { background-color: #4285F4; color: white; border: none; padding: 10px; margin: 5px; cursor: pointer; border-radius: 5px; }
+    button:hover { background-color: #357ae8; }
+</style>
+</head>
+<body>
+
+<h1>Week 1 Quiz</h1>
+
+<div id="quiz-container"></div>
+
+<script>
+    const questions = [
+    {
+        question: "A patient presents with sharp chest pain that is worse with lying down and partially relieved by sitting up. An ECG shows diffuse ST elevation. Which of the following is the most likely diagnosis?",
+        options: ["Myocardial infarction", "Pericarditis", "Pulmonary embolism", "Aortic dissection"],
+        answer: 1
+    },
+    {
+        question: "Which of the following findings is most suggestive of aortic dissection?",
+        options: ["Pain radiating to the left arm", "Ripping chest pain radiating to the back", "Diffuse ST elevation on ECG", "Pleural effusion on chest X-ray"],
+        answer: 1
+    },
+    {
+        question: "A patient presents with sudden onset chest pain and shortness of breath. CT angiography reveals a pulmonary embolism. Which of the following is the most appropriate initial management for a hemodynamically unstable patient?",
+        options: ["Oral warfarin", "Intravenous thrombolysis", "Low-molecular-weight heparin", "Aspirin"],
+        answer: 1
+    },
+    {
+        question: "In a patient with suspected acute myocardial infarction, which of the following biomarkers would be most useful to confirm the diagnosis?",
+        options: ["Troponin", "BNP", "D-dimer", "LDH"],
+        answer: 0
+    },
+    {
+        question: "Which of the following ECG findings is most consistent with a posterior myocardial infarction?",
+        options: ["ST elevation in leads II, III, aVF", "Tall R waves and ST depression in V1-V2", "ST elevation in leads V1-V4", "Q waves in leads I and aVL"],
+        answer: 1
+    },
+    {
+        question: "A patient presents with tearing chest pain radiating to the back and a blood pressure discrepancy between arms. Which of the following is the most likely cause?",
+        options: ["Pericarditis", "Aortic dissection", "Pulmonary embolism", "STEMI"],
+        answer: 1
+    },
+    {
+        question: "Which of the following medications should be avoided in a patient with suspected right ventricular infarction?",
+        options: ["Aspirin", "Nitroglycerin", "Heparin", "Morphine"],
+        answer: 1
+    },
+    {
+        question: "A 65-year-old male presents with new-onset heart failure symptoms and a history of a recent upper respiratory tract infection. Which of the following is the most likely cause?",
+        options: ["Myocarditis", "Aortic stenosis", "Mitral regurgitation", "Pericardial effusion"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is the most appropriate initial imaging study for suspected aortic dissection in a hemodynamically stable patient?",
+        options: ["CT angiography", "Chest X-ray", "Transthoracic echocardiogram", "Abdominal ultrasound"],
+        answer: 0
+    },
+    {
+        question: "A patient with chest pain and ECG findings of ST elevation in leads II, III, and aVF is most likely experiencing an infarction in which region of the heart?",
+        options: ["Anterior wall", "Inferior wall", "Lateral wall", "Posterior wall"],
+        answer: 1
+    },
+    {
+        question: "Which of the following medications is most appropriate for rate control in a patient with atrial fibrillation and decompensated heart failure?",
+        options: ["Diltiazem", "Metoprolol", "Amiodarone", "Digoxin"],
+        answer: 3
+    },
+    {
+        question: "A 50-year-old female presents with substernal chest pain radiating to the jaw. ECG shows ST depression in leads V4-V6. Which of the following is the most likely diagnosis?",
+        options: ["Non-ST elevation myocardial infarction (NSTEMI)", "STEMI", "Pericarditis", "Aortic dissection"],
+        answer: 0
+    },
+    {
+        question: "Which of the following physical exam findings is most suggestive of cardiac tamponade?",
+        options: ["Kussmaul sign", "Pulsus paradoxus", "S3 gallop", "Jugular venous distension without hypotension"],
+        answer: 1
+    },
+    {
+        question: "In a patient presenting with signs of shock, which of the following findings would most strongly suggest cardiogenic shock as the underlying cause?",
+        options: ["Elevated CVP with pulmonary crackles", "Decreased systemic vascular resistance", "Warm extremities", "Bradycardia"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is the most appropriate management for a patient presenting with ST elevation myocardial infarction (STEMI) at a hospital without PCI capabilities?",
+        options: ["Transfer for PCI if within 120 minutes", "Immediate thrombolysis", "Observation for 24 hours", "Aspirin alone"],
+        answer: 1
+    },
+    {
+        question: "A patient with atrial fibrillation is scheduled for cardioversion. Which of the following is a contraindication to immediate cardioversion?",
+        options: ["Atrial fibrillation duration >48 hours without anticoagulation", "Patient age >75", "Hypertension", "History of stroke"],
+        answer: 0
+    },
+    {
+        question: "Which of the following findings is most consistent with constrictive pericarditis?",
+        options: ["Pericardial knock", "S3 gallop", "Continuous murmur", "Mid-systolic click"],
+        answer: 0
+    },
+    {
+        question: "Which of the following medications is most appropriate for managing hypertension in a patient with aortic dissection?",
+        options: ["Labetalol", "Amlodipine", "Furosemide", "Losartan"],
+        answer: 0
+    },
+    {
+        question: "A 60-year-old male presents with sudden onset tearing chest pain and syncope. CT angiography reveals an aortic dissection. Which of the following is the most appropriate next step?",
+        options: ["Immediate surgical intervention", "IV antibiotics", "Percutaneous coronary intervention", "Oral beta-blockers"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is the most likely cause of a continuous murmur heard at the left infraclavicular area?",
+        options: ["Patent ductus arteriosus", "Aortic stenosis", "Mitral regurgitation", "Pulmonic stenosis"],
+        answer: 0
+    }
+];
+
+
+    const quizContainer = document.getElementById('quiz-container');
+
+    questions.forEach((q, i) => {
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'question';
+        questionDiv.innerHTML = `
+            <h2>Question ${i + 1} of ${questions.length}</h2>
+            <p>${q.question}</p>
+            ${q.options.map((opt, j) => `<button onclick="checkAnswer(${i}, ${j})">${opt}</button>`).join('')}
+            <p id="feedback-${i}" style="color: green;"></p>
+        `;
+        quizContainer.appendChild(questionDiv);
+    });
+
+    function checkAnswer(questionIndex, selectedOption) {
+        const feedback = document.getElementById(`feedback-${questionIndex}`);
+        if (selectedOption === questions[questionIndex].answer) {
+            feedback.textContent = "Correct!";
+        } else {
+            feedback.textContent = "Incorrect, try again.";
+        }
+    }
+</script>
+
+</body>
+</html>
