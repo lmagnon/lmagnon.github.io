@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 1 Quiz</title>
+<style>
+    body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+    .question { margin-bottom: 20px; }
+    button { background-color: #4285F4; color: white; border: none; padding: 10px; margin: 5px; cursor: pointer; border-radius: 5px; }
+    button:hover { background-color: #357ae8; }
+</style>
+</head>
+<body>
+
+<h1>Week 1 Quiz</h1>
+
+<div id="quiz-container"></div>
+
+<script>
+    const questions = [
+    {
+        question: "A 60-year-old male with a history of chronic obstructive pulmonary disease (COPD) presents with worsening dyspnea and productive cough. Which of the following is the most appropriate next step in management?",
+        options: ["Increase inhaled corticosteroids", "Oral antibiotics and systemic steroids", "Bronchodilator therapy only", "Observation and follow-up in 24 hours"],
+        answer: 1
+    },
+    {
+        question: "Which of the following spirometry findings is most consistent with obstructive lung disease?",
+        options: ["Reduced FEV1/FVC ratio", "Normal FEV1/FVC ratio", "Increased FEV1/FVC ratio", "Reduced FVC with normal FEV1"],
+        answer: 0
+    },
+    {
+        question: "A patient presents with wheezing, cough, and dyspnea that worsen at night. Spirometry shows a reversible obstructive pattern. Which of the following is the most likely diagnosis?",
+        options: ["Chronic bronchitis", "Emphysema", "Asthma", "Bronchiectasis"],
+        answer: 2
+    },
+    {
+        question: "In a patient with severe asthma exacerbation, which of the following is the most appropriate initial treatment?",
+        options: ["Inhaled corticosteroids", "Short-acting beta-agonists", "Leukotriene receptor antagonists", "Mast cell stabilizers"],
+        answer: 1
+    },
+    {
+        question: "Which of the following pathogens is most commonly associated with community-acquired pneumonia in previously healthy adults?",
+        options: ["Staphylococcus aureus", "Streptococcus pneumoniae", "Mycobacterium tuberculosis", "Klebsiella pneumoniae"],
+        answer: 1
+    },
+    {
+        question: "A 70-year-old female presents with hemoptysis, weight loss, and a lung mass on imaging. Which of the following is the most likely diagnosis?",
+        options: ["Lung adenocarcinoma", "Pulmonary embolism", "Tuberculosis", "Bronchiectasis"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is a common cause of transudative pleural effusion?",
+        options: ["Congestive heart failure", "Pneumonia", "Tuberculosis", "Pulmonary embolism"],
+        answer: 0
+    },
+    {
+        question: "A patient with interstitial lung disease is most likely to have which of the following findings on pulmonary function testing (PFT)?",
+        options: ["Decreased DLCO", "Increased TLC", "Increased FEV1/FVC ratio", "Obstructive pattern"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is the most appropriate diagnostic test for suspected pulmonary embolism in a hemodynamically stable patient?",
+        options: ["CT pulmonary angiography", "V/Q scan", "Chest X-ray", "D-dimer test"],
+        answer: 0
+    },
+    {
+        question: "A patient presents with fever, night sweats, and hemoptysis. Chest X-ray shows cavitary lesions in the upper lobes. Which of the following is the most likely diagnosis?",
+        options: ["Tuberculosis", "Lung abscess", "Histoplasmosis", "Bronchiectasis"],
+        answer: 0
+    },
+    {
+        question: "Which of the following medications is most appropriate for treating latent tuberculosis infection?",
+        options: ["Isoniazid", "Rifampin", "Ethambutol", "Pyrazinamide"],
+        answer: 0
+    },
+    {
+        question: "A 50-year-old male with a history of smoking presents with chronic cough, hemoptysis, and unintentional weight loss. Which of the following is the most appropriate initial diagnostic test?",
+        options: ["Chest CT scan", "Sputum culture", "Bronchoscopy", "Pulmonary function testing"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is a hallmark finding of bronchiectasis on high-resolution CT scan?",
+        options: ["Honeycombing", "Ground-glass opacities", "Dilated bronchi with thickened walls", "Nodular opacities"],
+        answer: 2
+    },
+    {
+        question: "Which of the following is most consistent with sarcoidosis on chest imaging?",
+        options: ["Bilateral hilar lymphadenopathy", "Pleural effusion", "Cavitary lesions", "Lobar consolidation"],
+        answer: 0
+    },
+    {
+        question: "A patient with cough, dyspnea, and pleuritic chest pain is found to have a pleural effusion. Thoracentesis reveals an exudative effusion. Which of the following is the most likely cause?",
+        options: ["Congestive heart failure", "Pneumonia", "Cirrhosis", "Nephrotic syndrome"],
+        answer: 1
+    },
+    {
+        question: "Which of the following is most consistent with a diagnosis of obstructive sleep apnea (OSA)?",
+        options: ["Daytime sleepiness and apneic episodes during sleep", "Morning headaches and hypercapnia", "Peripheral edema and orthopnea", "Night sweats and hemoptysis"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is the most appropriate management for a patient with newly diagnosed idiopathic pulmonary fibrosis?",
+        options: ["Nintedanib", "Azithromycin", "Inhaled corticosteroids", "Methotrexate"],
+        answer: 0
+    },
+    {
+        question: "A patient presents with acute hypoxemic respiratory failure and bilateral pulmonary infiltrates on chest X-ray without evidence of left atrial hypertension. Which of the following is the most likely diagnosis?",
+        options: ["Acute respiratory distress syndrome (ARDS)", "Congestive heart failure", "Pulmonary embolism", "Chronic bronchitis"],
+        answer: 0
+    },
+    {
+        question: "Which of the following findings on spirometry is most consistent with restrictive lung disease?",
+        options: ["Decreased TLC and FVC with normal FEV1/FVC ratio", "Decreased FEV1/FVC ratio", "Increased TLC and FVC", "Normal FEV1 and FVC"],
+        answer: 0
+    },
+    {
+        question: "A patient with a history of long-term amiodarone use presents with progressive dyspnea and a non-productive cough. Which of the following is the most likely cause?",
+        options: ["Amiodarone-induced pulmonary toxicity", "Congestive heart failure", "Chronic bronchitis", "Pulmonary embolism"],
+        answer: 0
+    }
+];
+
+    const quizContainer = document.getElementById('quiz-container');
+
+    questions.forEach((q, i) => {
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'question';
+        questionDiv.innerHTML = `
+            <h2>Question ${i + 1} of ${questions.length}</h2>
+            <p>${q.question}</p>
+            ${q.options.map((opt, j) => `<button onclick="checkAnswer(${i}, ${j})">${opt}</button>`).join('')}
+            <p id="feedback-${i}" style="color: green;"></p>
+        `;
+        quizContainer.appendChild(questionDiv);
+    });
+
+    function checkAnswer(questionIndex, selectedOption) {
+        const feedback = document.getElementById(`feedback-${questionIndex}`);
+        if (selectedOption === questions[questionIndex].answer) {
+            feedback.textContent = "Correct!";
+        } else {
+            feedback.textContent = "Incorrect, try again.";
+        }
+    }
+</script>
+
+</body>
+</html>
