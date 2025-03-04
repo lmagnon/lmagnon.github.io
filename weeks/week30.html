@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 1 Quiz</title>
+<style>
+    body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+    .question { margin-bottom: 20px; }
+    button { background-color: #4285F4; color: white; border: none; padding: 10px; margin: 5px; cursor: pointer; border-radius: 5px; }
+    button:hover { background-color: #357ae8; }
+</style>
+</head>
+<body>
+
+<h1>Week 1 Quiz</h1>
+
+<div id="quiz-container"></div>
+
+<script>
+    const questions = [
+    {
+        question: "A patient presents with exertional dyspnea, orthopnea, and paroxysmal nocturnal dyspnea. Which of the following is the most likely diagnosis?",
+        options: ["Heart failure", "Asthma", "Chronic obstructive pulmonary disease (COPD)", "Pulmonary embolism"],
+        answer: 0
+    },
+    {
+        question: "Which of the following physical exam findings is most consistent with right-sided heart failure?",
+        options: ["Peripheral pitting edema", "S3 gallop", "Basilar crackles", "Orthopnea"],
+        answer: 0
+    },
+    {
+        question: "A patient with congestive heart failure presents with shortness of breath and bilateral lower extremity edema. Which of the following is the most appropriate initial treatment?",
+        options: ["IV furosemide", "Oral beta-blocker", "ACE inhibitor", "Nitrates"],
+        answer: 0
+    },
+    {
+        question: "Which of the following medications is most beneficial in reducing mortality in heart failure with reduced ejection fraction (HFrEF)?",
+        options: ["ACE inhibitors", "Calcium channel blockers", "Thiazide diuretics", "Nitrates"],
+        answer: 0
+    },
+    {
+        question: "Which of the following diagnostic tests is most useful in differentiating between cardiac and non-cardiac causes of dyspnea?",
+        options: ["BNP (B-type natriuretic peptide)", "D-dimer", "Troponin", "CRP"],
+        answer: 0
+    },
+    {
+        question: "A patient presents with jugular venous distention, hypotension, and muffled heart sounds. Which of the following is the most likely diagnosis?",
+        options: ["Cardiac tamponade", "Pericarditis", "Pulmonary embolism", "Myocardial infarction"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is a common side effect of ACE inhibitors?",
+        options: ["Cough", "Hyperkalemia", "Angioedema", "All of the above"],
+        answer: 3
+    },
+    {
+        question: "Which of the following is the best initial imaging modality for evaluating heart function and assessing ejection fraction?",
+        options: ["Echocardiogram", "Chest X-ray", "CT scan", "Cardiac MRI"],
+        answer: 0
+    },
+    {
+        question: "A 55-year-old male with a history of hypertension presents with acute decompensated heart failure. Which of the following is the most appropriate immediate management?",
+        options: ["IV diuretics and vasodilators", "Oral beta-blockers", "Calcium channel blockers", "Aspirin"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is the most specific sign of left-sided heart failure on physical examination?",
+        options: ["Basilar crackles", "Hepatomegaly", "Peripheral edema", "Jugular venous distention"],
+        answer: 0
+    },
+    {
+        question: "Which of the following findings on echocardiogram is most consistent with heart failure with preserved ejection fraction (HFpEF)?",
+        options: ["Normal ejection fraction with diastolic dysfunction", "Reduced ejection fraction", "Hyperdynamic left ventricle", "Ventricular aneurysm"],
+        answer: 0
+    },
+    {
+        question: "A patient with congestive heart failure is started on spironolactone. Which of the following electrolyte abnormalities should be monitored?",
+        options: ["Hyperkalemia", "Hyponatremia", "Hypercalcemia", "Hypomagnesemia"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is a clinical feature of right-sided heart failure?",
+        options: ["Hepatojugular reflux", "Orthopnea", "S3 gallop", "Basilar crackles"],
+        answer: 0
+    },
+    {
+        question: "A patient with heart failure and reduced ejection fraction is intolerant to ACE inhibitors due to cough. Which of the following is the best alternative?",
+        options: ["ARB (e.g., losartan)", "Calcium channel blocker", "Thiazide diuretic", "Beta-blocker only"],
+        answer: 0
+    },
+    {
+        question: "Which of the following lifestyle modifications is most beneficial for patients with congestive heart failure?",
+        options: ["Sodium restriction", "High protein diet", "Increased fluid intake", "Low fiber diet"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is an important initial management step for a patient with suspected congestive heart failure and pulmonary edema?",
+        options: ["Administer IV diuretics", "Initiate oral beta-blockers", "Perform exercise stress testing", "Order a colonoscopy"],
+        answer: 0
+    },
+    {
+        question: "A patient presents with new onset lower extremity edema, dyspnea, and orthopnea. An echocardiogram reveals a reduced ejection fraction. Which of the following is the most likely diagnosis?",
+        options: ["Heart failure with reduced ejection fraction (HFrEF)", "Heart failure with preserved ejection fraction (HFpEF)", "Acute pericarditis", "Pulmonary embolism"],
+        answer: 0
+    },
+    {
+        question: "Which of the following laboratory findings is most consistent with chronic heart failure?",
+        options: ["Elevated BNP", "Low D-dimer", "High white blood cell count", "Normal troponin"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is most appropriate for long-term management of heart failure with reduced ejection fraction (HFrEF)?",
+        options: ["Beta-blockers, ACE inhibitors, and aldosterone antagonists", "Calcium channel blockers only", "Loop diuretics only", "Nitrates and hydralazine only"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is a contraindication to the use of beta-blockers in the management of heart failure?",
+        options: ["Acute decompensated heart failure", "Stable heart failure", "Post-myocardial infarction", "Hypertension"],
+        answer: 0
+    }
+];
+
+    const quizContainer = document.getElementById('quiz-container');
+
+    questions.forEach((q, i) => {
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'question';
+        questionDiv.innerHTML = `
+            <h2>Question ${i + 1} of ${questions.length}</h2>
+            <p>${q.question}</p>
+            ${q.options.map((opt, j) => `<button onclick="checkAnswer(${i}, ${j})">${opt}</button>`).join('')}
+            <p id="feedback-${i}" style="color: green;"></p>
+        `;
+        quizContainer.appendChild(questionDiv);
+    });
+
+    function checkAnswer(questionIndex, selectedOption) {
+        const feedback = document.getElementById(`feedback-${questionIndex}`);
+        if (selectedOption === questions[questionIndex].answer) {
+            feedback.textContent = "Correct!";
+        } else {
+            feedback.textContent = "Incorrect, try again.";
+        }
+    }
+</script>
+
+</body>
+</html>
