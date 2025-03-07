@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 1 Quiz</title>
+<style>
+    body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+    .question { margin-bottom: 20px; }
+    button { background-color: #4285F4; color: white; border: none; padding: 10px; margin: 5px; cursor: pointer; border-radius: 5px; }
+    button:hover { background-color: #357ae8; }
+</style>
+</head>
+<body>
+
+<h1>Week 1 Quiz</h1>
+
+<div id="quiz-container"></div>
+
+<script>
+   const questions = [
+    {
+        question: "A patient presents with a cough lasting more than 8 weeks, accompanied by nasal congestion and postnasal drip. Which of the following is the most likely cause of the chronic cough?",
+        options: ["Asthma", "GERD", "Upper airway cough syndrome (postnasal drip)", "COPD"],
+        answer: 2
+    },
+    {
+        question: "Which of the following findings on chest examination is most suggestive of lobar pneumonia?",
+        options: ["Rhonchi, egophony, and dullness to percussion", "Wheezing and hyperresonance", "Clear lung fields", "Stridor and wheezing"],
+        answer: 0
+    },
+    {
+        question: "A patient presents with a productive cough of green sputum, fever, and pleuritic chest pain. Which of the following is the most likely causative pathogen?",
+        options: ["Streptococcus pneumoniae", "Mycoplasma pneumoniae", "Legionella pneumophila", "Klebsiella pneumoniae"],
+        answer: 0
+    },
+    {
+        question: "Which of the following mechanisms explains the cough caused by ACE inhibitors?",
+        options: ["Accumulation of bradykinin", "Inhibition of cyclooxygenase", "Bronchodilation", "Inhibition of histamine release"],
+        answer: 0
+    },
+    {
+        question: "A patient with a chronic cough presents with clubbing of the fingers. Which of the following is the most likely cause?",
+        options: ["Lung cancer", "GERD", "Asthma", "Acute bronchitis"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is a typical finding in pleuritic chest pain associated with pulmonary embolism?",
+        options: ["Sharp, stabbing pain worsened by deep breathing", "Dull, pressure-like pain", "Crushing substernal pain", "Pain radiating to the jaw"],
+        answer: 0
+    },
+    {
+        question: "A patient presents with sudden onset dyspnea, pleuritic chest pain, and hemoptysis. Which of the following is the most appropriate diagnostic test?",
+        options: ["CT pulmonary angiography", "Chest X-ray", "Spirometry", "Bronchoscopy"],
+        answer: 0
+    },
+    {
+        question: "Which of the following findings is most consistent with interstitial lung disease on high-resolution CT?",
+        options: ["Ground-glass opacities", "Cavitary lesions", "Consolidation", "Mediastinal shift"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is most likely to cause a post-infectious subacute cough lasting 3-8 weeks?",
+        options: ["Mycoplasma pneumoniae", "Bordetella pertussis", "Streptococcus pneumoniae", "Influenza virus"],
+        answer: 1
+    },
+    {
+        question: "Which of the following best describes the pathophysiology of surfactant in preventing alveolar collapse?",
+        options: ["Reduces surface tension", "Increases alveolar surface area", "Increases surface tension", "Promotes fluid accumulation"],
+        answer: 0
+    },
+    {
+        question: "A patient with a history of DVT presents with a new onset of cough and dyspnea. Which of the following is the most likely cause?",
+        options: ["Pulmonary embolism", "Asthma", "Pneumonia", "Bronchitis"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is most consistent with respiratory alkalosis on arterial blood gas analysis?",
+        options: ["High pH, low PaCO2", "Low pH, high PaCO2", "High pH, high PaCO2", "Low pH, low PaCO2"],
+        answer: 0
+    },
+    {
+        question: "Which of the following statements about alveolar type II pneumocytes is true?",
+        options: ["They produce surfactant", "They are responsible for gas exchange", "They lack organelles", "They form the majority of the alveolar surface area"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is the primary cause of hemoptysis characterized by 'red-currant jelly' sputum?",
+        options: ["Klebsiella pneumoniae", "Streptococcus pneumoniae", "Mycobacterium tuberculosis", "Haemophilus influenzae"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is the most appropriate initial management for a patient with suspected lobar pneumonia and respiratory distress?",
+        options: ["Oxygen therapy and antibiotics", "Bronchodilators only", "IV corticosteroids", "Observation"],
+        answer: 0
+    },
+    {
+        question: "A biopsy of a mediastinal lymph node reveals necrotic debris and malignant squamous cells. Which of the following is the most likely diagnosis?",
+        options: ["Squamous cell carcinoma", "Adenocarcinoma", "Small cell carcinoma", "Mesothelioma"],
+        answer: 0
+    },
+    {
+        question: "Which of the following immunohistochemical stains is most specific for squamous cell carcinoma?",
+        options: ["p40", "CD20", "CK7", "TTF-1"],
+        answer: 0
+    },
+    {
+        question: "Which of the following best describes the mechanism of pleuritic chest pain?",
+        options: ["Irritation of the parietal pleura", "Compression of the visceral pleura", "Obstruction of bronchi", "Compression of the phrenic nerve"],
+        answer: 0
+    },
+    {
+        question: "A patient presents with pleuritic chest pain and a history of recent long-haul flight. Which of the following is the most likely diagnosis?",
+        options: ["Pulmonary embolism", "Pneumothorax", "Asthma", "Pneumonia"],
+        answer: 0
+    },
+    {
+        question: "Which of the following is most consistent with post-nasal drip as a cause of chronic cough?",
+        options: ["Frequent throat clearing", "Hemoptysis", "Wheezing", "Sudden onset of dry cough"],
+        answer: 0
+    }
+];
+
+    const quizContainer = document.getElementById('quiz-container');
+
+    questions.forEach((q, i) => {
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'question';
+        questionDiv.innerHTML = `
+            <h2>Question ${i + 1} of ${questions.length}</h2>
+            <p>${q.question}</p>
+            ${q.options.map((opt, j) => `<button onclick="checkAnswer(${i}, ${j})">${opt}</button>`).join('')}
+            <p id="feedback-${i}" style="color: green;"></p>
+        `;
+        quizContainer.appendChild(questionDiv);
+    });
+
+    function checkAnswer(questionIndex, selectedOption) {
+        const feedback = document.getElementById(`feedback-${questionIndex}`);
+        if (selectedOption === questions[questionIndex].answer) {
+            feedback.textContent = "Correct!";
+        } else {
+            feedback.textContent = "Incorrect, try again.";
+        }
+    }
+</script>
+
+</body>
+</html>
